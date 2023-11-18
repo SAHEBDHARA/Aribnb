@@ -4,10 +4,19 @@ import Avatar from '../Avatar'
 import { useCallback, useState } from 'react'
 import MenuItem from './MenuItem'
 import useRegisterModel from '@/app/hooks/UseRegisterModel'
+import useLoginModel from '@/app/hooks/UserLoginModel'
+import { User } from '@prisma/client'
 
-const Usermanue = () => {
+interface UsermanueProps {
+    currentUser: User | null 
+}
+
+const Usermanue: React.FC<UsermanueProps> = ({
+    currentUser
+}) => {
     const [isOpen, setIsopen] = useState(false); 
     const registerModel = useRegisterModel(); 
+    const loginModel = useLoginModel(); 
 
     const toggleOpen = useCallback(()=>{
         setIsopen((value)=> !value)
@@ -32,9 +41,38 @@ const Usermanue = () => {
         {isOpen && (
             <div className=' absolute rounded-xl shadow-md w-[40vh] md:w-3/4 bg-white overflow-hidden right-0 top-12 text-sm '>
                 <div className='flex flex-col cursor-pointer'>
-                    <>
+                    {currentUser ? (
+                        <>
                      <MenuItem
                       onClick={()=>{}}
+                      label='My trips'
+                     />
+                     <MenuItem
+                      onClick={()=>{}}
+                      label='My Fevorites'
+                     />
+                     <MenuItem
+                      onClick={()=>{}}
+                      label='My reservatioins'
+                     />
+                     <MenuItem
+                      onClick={()=>{}}
+                      label='My proparties'
+                     />
+                     <MenuItem
+                      onClick={()=>{}}
+                      label='Airbnb My home'
+                     />
+                     <hr/>
+                     <MenuItem
+                      onClick={()=>{}}
+                      label='Logout'
+                     />
+                    </>
+                    ):(
+                    <>
+                     <MenuItem
+                      onClick={loginModel.onOpen}
                       label='login'
                      />
                      <MenuItem
@@ -42,6 +80,7 @@ const Usermanue = () => {
                       label='Sign Up'
                      />
                     </>
+                    )}
                 </div>
             </div>
         )}
