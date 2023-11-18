@@ -6,12 +6,13 @@ import MenuItem from './MenuItem'
 import useRegisterModel from '@/app/hooks/UseRegisterModel'
 import useLoginModel from '@/app/hooks/UserLoginModel'
 import { User } from '@prisma/client'
+import { signOut } from 'next-auth/react'
 
 interface UsermanueProps {
-    currentUser: User | null 
+    currentUser?: User | null; 
 }
 
-const Usermanue: React.FC<UsermanueProps> = ({
+const Usermanu: React.FC<UsermanueProps> = ({
     currentUser
 }) => {
     const [isOpen, setIsopen] = useState(false); 
@@ -65,7 +66,7 @@ const Usermanue: React.FC<UsermanueProps> = ({
                      />
                      <hr/>
                      <MenuItem
-                      onClick={()=>{}}
+                      onClick={()=>signOut()}
                       label='Logout'
                      />
                     </>
@@ -88,4 +89,4 @@ const Usermanue: React.FC<UsermanueProps> = ({
   )
 }
 
-export default Usermanue
+export default Usermanu
