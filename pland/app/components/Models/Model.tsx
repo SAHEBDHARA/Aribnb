@@ -90,7 +90,7 @@ const Model: React.FC<ModelProps> = ({
                         <div className="flex flex-row items-center  gap-4 w-full">
                            { secondaryAction && secondaryLabel && ( <Button 
                               disabled={disabled}
-                              label={secondaryAction}
+                              label={secondaryLabel}
                               onClick={handleSecondaryAction}
                               outline
                             />

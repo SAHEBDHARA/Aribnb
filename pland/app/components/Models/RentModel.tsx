@@ -7,6 +7,7 @@ import Heading from '../Heading'
 import { catagories } from '../Navbar/Catagory'
 import CatagoryInput from '../Inputs/CatagoryInputs'
 import { FieldValues, useForm } from 'react-hook-form'
+import CountrySelect from '../Inputs/CountrySelect'
 
 enum STEPS {
   CATAGORY= 0,
@@ -47,6 +48,7 @@ const RentModel = () => {
   })
 
   const catagory = watch('catagory')
+  const location = watch('location')
   const setCustomValue = (id: string, value: any) =>{
     setValue(id, value,{
       shouldValidate: true,
@@ -101,16 +103,33 @@ const RentModel = () => {
     </div>
   )
 
+  if(step == STEPS.LOCATION){
+    bodyContent = (
+      <div
+      className='flex flex-col gap-8'
+      >
+        <Heading
+        title='Where your place is located?'
+        subtitle='Help guest find you'
+        />
+        <CountrySelect
+        value={location}
+        onChange={(value)=> setCustomValue('location',value)}
+        />
+      </div>
+    )
+  }
+
 
   return (
     <Model
     isOpen = {rentModel.isOpen}
     onClose={rentModel.onClose}
-    onSubmit={rentModel.onClose}
+    onSubmit={onNext}
     actionLabel={actionLabel}
     secondaryLabel={usesecondaryActionlable}
     secondaryAction={step == STEPS.CATAGORY ? undefined : onBack}
-    title='Aribnb your hoome'
+    title='Aribnb your hoome' 
     body={bodyContent}
     />
   )
