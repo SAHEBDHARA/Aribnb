@@ -4,6 +4,7 @@ import Container from '../Container'
 import Logo from './Logo'
 import Search from './Search'
 import Usermanu from './Usermanue'
+import Catagory from './Catagory'
 
 interface NavbarProps {
   currentUser?: User  | null; 
@@ -23,6 +24,7 @@ const Navbar: React.FC<NavbarProps> = ({
         </div>
       </Container>
      </div>
+     <Catagory/>
       </div>
   )
 }

@@ -35,7 +35,7 @@ const Usermanu: React.FC<UsermanueProps> = ({
             className="p-4 md:px-2 md:py-1 border-[1px] border-neutral-200 flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition ">
                 <AiOutlineMenu/>
                 <div className="hidden md:block">
-                    <Avatar/>
+                    <Avatar src={currentUser?.image} /> 
                 </div>
             </div>
         </div>

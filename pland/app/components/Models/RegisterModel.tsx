@@ -10,6 +10,7 @@ import Heading from "../Heading"
 import Input from "../Inputs/Input"
 import toast from "react-hot-toast"
 import Button from "../Button"
+import { signIn } from "next-auth/react"
 
 export const RegisterModel = () => {
     const registerModel = useRegisterModel();  
@@ -82,13 +83,13 @@ export const RegisterModel = () => {
             outline
             label="continue with Google"
             icon={FcGoogle}
-            onClick={()=>{}}
+            onClick={()=>signIn('google')}
             />
             <Button
             outline
             label="continue with GitHub"
             icon={AiFillGithub}
-            onClick={()=>{}}
+            onClick={()=>signIn('github')}
             />
             <div className="text-neutral-500 text-center mt-4 font-light">
                 <div className="flex flex-row items-center gap-2 justify-center">
