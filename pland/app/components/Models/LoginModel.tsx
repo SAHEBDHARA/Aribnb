@@ -3,7 +3,7 @@ import { signIn } from "next-auth/react"
 import axios from "axios"
 import { AiFillGithub } from "react-icons/ai"
 import {FcGoogle} from "react-icons/fc"
-import { useState } from "react"
+import { useCallback, useState } from "react"
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form"
 import useRegisterModel from "@/app/hooks/UseRegisterModel"
 import useLoginModel from "@/app/hooks/UserLoginModel"
@@ -77,6 +77,10 @@ export const LoginModel = () => {
              />
         </div>
     )
+    const toggle =useCallback(()=>{
+        loginModel.onClose();
+        registerModel.onOpen()
+    },[loginModel, registerModel])
 
     const footerContent = (
         <div className="flex flex-col gap-4 mt-3">
@@ -95,8 +99,8 @@ export const LoginModel = () => {
             />
             <div className="text-neutral-500 text-center mt-4 font-light">
                 <div className="flex flex-row items-center gap-2 justify-center">
-                    <div>Already Registered?</div>
-                    <div className="text-neutral-800 cursor-pointer hover:underline" onClick={registerModel.onClose}>Log in</div>
+                    <div>It's your first time?</div>
+                    <div className="text-neutral-800 cursor-pointer hover:underline" onClick={toggle}>Create an account</div>
                 </div>
             </div>
         </div>

@@ -7,6 +7,7 @@ import useRegisterModel from '@/app/hooks/UseRegisterModel'
 import useLoginModel from '@/app/hooks/UserLoginModel'
 import { User } from '@prisma/client'
 import { signOut } from 'next-auth/react'
+import useRentModel from '@/app/hooks/UseRentModel'
 
 interface UsermanueProps {
     currentUser?: User | null; 
@@ -18,15 +19,25 @@ const Usermanu: React.FC<UsermanueProps> = ({
     const [isOpen, setIsopen] = useState(false); 
     const registerModel = useRegisterModel(); 
     const loginModel = useLoginModel(); 
+    const rentModel = useRentModel()
 
     const toggleOpen = useCallback(()=>{
         setIsopen((value)=> !value)
     },[])
+
+    const onRent = useCallback(()=>{
+        if(!currentUser){
+            return loginModel.onOpen(); 
+        }
+        // Open model
+        rentModel.onOpen();
+        
+    },[currentUser, loginModel, rentModel])
   return (
     <div className="relative ">
         <div className="flex flex-row items-center gap-3 ">
             <div 
-            // onClick={()=>{}} 
+            onClick={onRent} 
             className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer">
                 Aribnb Your home 
             </div>
@@ -61,7 +72,7 @@ const Usermanu: React.FC<UsermanueProps> = ({
                       label='My proparties'
                      />
                      <MenuItem
-                      onClick={()=>{}}
+                      onClick={rentModel.onOpen}
                       label='Airbnb My home'
                      />
                      <hr/>
