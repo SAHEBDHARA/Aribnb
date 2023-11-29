@@ -45,7 +45,7 @@ const useFavorite = ({ listingId, currentUser }: IUseFavorite) => {
         console.log(error)
       toast.error('Something went wrong.');
     }
-  }, 
+  },
   [
     currentUser, 
     hasFavorited, 

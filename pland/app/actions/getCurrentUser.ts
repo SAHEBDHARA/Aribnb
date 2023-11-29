@@ -23,7 +23,11 @@ export default async function getCurrnetUser() {
     if (!currentUser) {
       return null;
     }
-    return currentUser;
+    return {
+          ...currentUser,
+          createdAt: currentUser.createdAt.toISOString(),
+          updatedAt: currentUser.updatedAt.toISOString(),
+        };
   } catch (error: any) {
     return null;
   }

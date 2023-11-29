@@ -8,6 +8,7 @@ import format from "date-fns/format";
 import Image from "next/image";
 import HeartButton from "../HeartButton";
 import Button from "../Button";
+import { SafeUser } from "@/app/types";
 
 interface ListingCartProps {
   data: Listing;
@@ -16,7 +17,7 @@ interface ListingCartProps {
   disabled?: boolean;
   actionLable?: string;
   actionId?: string;
-  currentUser?: User;
+  currentUser?: SafeUser ;
 }
 
 const ListingCart: React.FC<ListingCartProps> = ({
