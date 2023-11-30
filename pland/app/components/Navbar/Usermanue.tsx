@@ -8,6 +8,7 @@ import useLoginModel from '@/app/hooks/UserLoginModel'
 import { User } from '@prisma/client'
 import { signOut } from 'next-auth/react'
 import useRentModel from '@/app/hooks/UseRentModel'
+import { useRouter } from 'next/navigation'
 
 interface UsermanueProps {
     currentUser?: User | null; 
@@ -20,6 +21,7 @@ const Usermanu: React.FC<UsermanueProps> = ({
     const registerModel = useRegisterModel(); 
     const loginModel = useLoginModel(); 
     const rentModel = useRentModel()
+    const router = useRouter()
 
     const toggleOpen = useCallback(()=>{
         setIsopen((value)=> !value)
@@ -56,7 +58,7 @@ const Usermanu: React.FC<UsermanueProps> = ({
                     {currentUser ? (
                         <>
                      <MenuItem
-                      onClick={()=>{}}
+                      onClick={()=> router.push('/trips')}
                       label='My trips'
                      />
                      <MenuItem

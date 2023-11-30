@@ -1,23 +1,22 @@
 "use client";
 
 import useCountries from "@/app/hooks/UseCountry";
-import { Listing, Reservation, User } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import { useCallback, useMemo } from "react";
 import format from "date-fns/format";
 import Image from "next/image";
 import HeartButton from "../HeartButton";
 import Button from "../Button";
-import { SafeUser } from "@/app/types";
+import { SafeListing, SafeReservation, SafeUser } from "@/app/types";
 
 interface ListingCartProps {
-  data: Listing;
-  reservation?: Reservation;
+  data: SafeListing;
+  reservation?: SafeReservation;
   onAction?: (id: string) => void;
   disabled?: boolean;
   actionLable?: string;
   actionId?: string;
-  currentUser?: SafeUser ;
+  currentUser?: SafeUser | null ;
 }
 
 const ListingCart: React.FC<ListingCartProps> = ({
@@ -55,7 +54,7 @@ const ListingCart: React.FC<ListingCartProps> = ({
         return null;
     }
     const start = new Date(reservation.startDate) 
-    const end = new Date(reservation.endDateTime) 
+    const end = new Date(reservation.endDate) 
 
     return `${format(start, 'PP')} - ${format(end,'PP')}`; 
 
