@@ -34,6 +34,7 @@ export const RegisterModel = () => {
         setIsloading(true)
         axios.post('/api/register', data)
         .then(()=>{
+            loginModel.onOpen()
             registerModel.onClose()
         })
         .catch((error)=>{

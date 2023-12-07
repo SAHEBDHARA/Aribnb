@@ -66,7 +66,7 @@ const Usermanu: React.FC<UsermanueProps> = ({
                       label='My Fevorites'
                      />
                      <MenuItem
-                      onClick={()=>{}}
+                      onClick={()=>router.push('/reservations')}
                       label='My reservatioins'
                      />
                      <MenuItem

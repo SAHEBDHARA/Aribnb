@@ -22,7 +22,7 @@ const TripsClient: React.FC<TripsClientProps> = ({
 
     const onCancle = useCallback((id: string)=>{
         setDeletingid(id);
-
+      
         axios.delete(`/api/reservations/${id}`)
         .then(()=>{
             toast.success('Reservation Cancelled');
@@ -43,7 +43,7 @@ const TripsClient: React.FC<TripsClientProps> = ({
         subtitle="Where you have been and where you are going to"
         />
         <div className=" mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8">
-            {reservations.map((reservation)=>(
+            {reservations.map((reservation: any)=>(
                 <ListingCart
                 key={reservation.id}
                 data={reservation.listing}
