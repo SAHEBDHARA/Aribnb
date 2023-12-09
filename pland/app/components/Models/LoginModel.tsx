@@ -99,7 +99,7 @@ export const LoginModel = () => {
             />
             <div className="text-neutral-500 text-center mt-4 font-light">
                 <div className="flex flex-row items-center gap-2 justify-center">
-                    <div>It's your first time?</div>
+                    <div>It is your first time?</div>
                     <div className="text-neutral-800 cursor-pointer hover:underline" onClick={toggle}>Create an account</div>
                 </div>
             </div>
