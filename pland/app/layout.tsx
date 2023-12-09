@@ -8,6 +8,7 @@ import ToasterProvider from "./providers/ToasterProvider";
 import { LoginModel } from "./components/Models/LoginModel";
 import getCurrnetUser from "./actions/getCurrentUser";
 import RentModel from "./components/Models/RentModel";
+import SearchModel from "./components/Models/SearchModel";
 
 const font = Nunito({ subsets: ["latin"] });
 
@@ -15,20 +16,20 @@ export const metadata: Metadata = {
   title: "Airbnb",
   description: "Airbnb clone ",
 };
-
 export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const currentUser = await getCurrnetUser( )
+  const currentUser = await getCurrnetUser()
   return (
     <html lang="en">
       <body className={font.className}>
         <ClientOnly>
-          <Navbar currentUser = {currentUser} />
+          <Navbar currentUser= {currentUser} />
           <ToasterProvider/>
           <RentModel/>  
+          <SearchModel/>
           <RegisterModel/>  
           <LoginModel/>
         </ClientOnly>

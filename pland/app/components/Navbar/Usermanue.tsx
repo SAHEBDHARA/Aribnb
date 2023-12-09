@@ -9,9 +9,10 @@ import { User } from '@prisma/client'
 import { signOut } from 'next-auth/react'
 import useRentModel from '@/app/hooks/UseRentModel'
 import { useRouter } from 'next/navigation'
+import { SafeUser } from '@/app/types'
 
 interface UsermanueProps {
-    currentUser?: User | null; 
+    currentUser?: SafeUser | null; 
 }
 
 const Usermanu: React.FC<UsermanueProps> = ({
@@ -62,7 +63,7 @@ const Usermanu: React.FC<UsermanueProps> = ({
                       label='My trips'
                      />
                      <MenuItem
-                      onClick={()=>{}}
+                      onClick={()=>router.push('/favorites')}
                       label='My Fevorites'
                      />
                      <MenuItem
@@ -70,8 +71,8 @@ const Usermanu: React.FC<UsermanueProps> = ({
                       label='My reservatioins'
                      />
                      <MenuItem
-                      onClick={()=>{}}
-                      label='My proparties'
+                      onClick={()=>router.push('/properties')}
+                      label='My properties'
                      />
                      <MenuItem
                       onClick={rentModel.onOpen}
