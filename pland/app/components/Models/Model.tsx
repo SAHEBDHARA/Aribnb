@@ -97,7 +97,7 @@ const Model: React.FC<ModelProps> = ({
                         )}
                             <Button 
                               disabled={disabled}
-                              label={actionLabel}
+                              label={actionLabel|| "Click"}
                               onClick={handleSubmit}
                             />
                         </div>
