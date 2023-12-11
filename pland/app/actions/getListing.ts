@@ -27,7 +27,7 @@ export default async function getListings(
             locationValue,
             catagory
         } = params; 
-
+ console.log("params are ",params)
         let quary: any = {};
         if (userId){
             quary.userId = userId;
